@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F90EE136-0F0C-4FB4-932A-A0EEEEFAC855</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Even Fibonacci numbers</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>09A67DCA5BBAFAD82F2AD6D47544E1A190810605</key>
+		<string>https://github.com/MehdiSv/Swift-Euler-Project</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Even Fibonacci numbers/Even Fibonacci numbers.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>09A67DCA5BBAFAD82F2AD6D47544E1A190810605</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/MehdiSv/Swift-Euler-Project</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>09A67DCA5BBAFAD82F2AD6D47544E1A190810605</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>09A67DCA5BBAFAD82F2AD6D47544E1A190810605</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Swift-Euler-Project</string>
+		</dict>
+	</array>
+</dict>
+</plist>
