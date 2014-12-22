@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 func getSmallestMultiple() {
     
     var result = 1
