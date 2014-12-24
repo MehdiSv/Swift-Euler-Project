@@ -28,7 +28,7 @@ func isPrime(number:Int) -> Bool {
     else {
         let maxPrime = Int(ceil(sqrt(Double(number))))
         
-        for var i = 5; i <= maxPrime; i += 6 {
+        for i in stride(from: 5, through: maxPrime, by: 6) {
             if number % i == 0  || number % (i + 2) == 0 {
                 return false
             }
