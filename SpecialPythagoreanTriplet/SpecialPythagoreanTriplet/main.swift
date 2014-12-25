@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 func getSpecialPythagoreanTriplet(sum:Int) -> Int {
     
     for var c = 2; c < sum; c++ {
@@ -24,23 +23,24 @@ func getSpecialPythagoreanTriplet(sum:Int) -> Int {
                     c *= sum / minSum
                     return a * b * c
                 }
-                
             }
-            
         }
         
     }
     return -1
 }
 
-func printTimeElapsedWhenRunningCode(operation:(Int) -> Int) {
-    let startTime = CFAbsoluteTimeGetCurrent()
-    let number = operation(1_000)
-    let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+func euler9() {
+    let number = getSpecialPythagoreanTriplet(1_000)
+    
     println(number)
+}
+
+func printTimeElapsedWhenRunningCode(operation:() -> ()) {
+    let startTime = CFAbsoluteTimeGetCurrent()
+    operation()
+    let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
     println("Time elapsed : \(timeElapsed) s")
 }
 
-printTimeElapsedWhenRunningCode(getSpecialPythagoreanTriplet)
-
-// 2.3961067199707e-05 s
+printTimeElapsedWhenRunningCode(euler9)
