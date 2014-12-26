@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "_0001st_prime.nthPrime (Swift.Int) -&gt; Swift.Int [inlined]:main.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "upperBound">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
