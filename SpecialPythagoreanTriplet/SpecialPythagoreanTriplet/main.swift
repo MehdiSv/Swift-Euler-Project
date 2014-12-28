@@ -10,28 +10,19 @@ import Foundation
 
 func getSpecialPythagoreanTriplet(sum:Int) -> Int {
     
-    for var c = 2; c < sum; c++ {
-        
-        for var b = 1;b < c; b++ {
-            
-            for var a = 0; a < b; a++ {
-                
-                if (sum % (a + b + c)) == 0 && a * a + b * b == c * c {
-                    let minSum = a + b + c
-                    a *= sum / minSum
-                    b *= sum / minSum
-                    c *= sum / minSum
-                    return a * b * c
-                }
+    for var a = 1; a <= (sum - 3)/3; a++ {
+        for var b = a + 1; b <= (sum-1-a)/2; b++ {
+            var c = sum - a - b
+            if a * a + b * b == c * c {
+                return a * b * c
             }
         }
-        
     }
     return -1
 }
 
 func euler9() {
-    let number = getSpecialPythagoreanTriplet(1_000)
+    let number = getSpecialPythagoreanTriplet(1000)
     
     println(number)
 }

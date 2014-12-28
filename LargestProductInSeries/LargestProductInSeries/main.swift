@@ -10,13 +10,22 @@ import Foundation
 
 func largestProduct(digits : [Int], numDigits : Int) -> Int {
     
-    var maxNumber = 0
-    let maxLength = digits.count - numDigits
-    for i in 0 ..< maxLength {
-        let number = reduce(i ..< i + numDigits, 1) { $0 * digits[$1] }
-        if number > maxNumber {
-            maxNumber = number
+    var maxNumber = reduce(0 ..< numDigits, 1) { $0 * digits[$1] }
+    
+    var prevVal = maxNumber;
+    
+    for var i = numDigits;i < digits.count; i++ {
+        
+        var leftVal = digits[i - numDigits];
+        if (leftVal != 0) {
+            if (prevVal != 0){
+
+                prevVal = (prevVal / leftVal) * (digits[i])
+            }
+        } else{
+            prevVal = reduce(i - numDigits + 1 ..< i + 1, 1) { $0 * digits[$1] }
         }
+        maxNumber = max(maxNumber, prevVal)
     }
     
     return maxNumber

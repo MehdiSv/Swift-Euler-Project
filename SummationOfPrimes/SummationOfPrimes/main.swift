@@ -8,51 +8,68 @@
 
 import Foundation
 
-func isPrime(number:Int) -> Bool {
+func summationOfPrimesBelow(var n:Int) -> Int {
 
-    if number == 1 {
-        return false
+    assert(n > 0, "argument must be positive")
+    
+    if n == 2 {
+        return 1
     }
-    else if number < 4 {
-        return true
-    }
-    else if number % 2 == 0 {
-        return false
-    }
-    else if number < 9 {
-        return true
-    }
-    else if number % 3 == 0 {
-        return false
-    }
-    else {
-        let maxPrime = Int(ceil(sqrt(Double(number))))
+    
+    var composite = [Bool](count: n, repeatedValue: false)
+    let maxPrime = Int(ceil(sqrt(Double(n))))
+    
+//    var x = 2
+//    
+//    
+//    while x <= maxPrime {
+//        if composite[x] == false {
+//            for y in stride(from: x * x, through: n - 1, by: x) {
+//                composite[y] = true
+//            }
+//        }
+//        x++
+//    }
+//
+//    var result = 0
+//    for i in stride(from: 2, through: composite.count - 1, by: 1) {
+//        if composite[i] == false {
+//            result += i
+//        }
+//    }
 
-        for var i = 5; i <= maxPrime; i += 6 {
-            if number % i == 0  || number % (i + 2) == 0 {
-                return false
+    var x = 5
+    while x <= maxPrime {
+        if composite[x] == false {
+            for y in stride(from: x * x, through: n - 1, by: x) {
+                composite[y] = true
             }
         }
+        x+=2
+        if x<n && composite[x] == false {
+            for y in stride(from: x * x, through: n - 1, by: x) {
+                composite[y] = true
+            }
+        }
+        x+=4
     }
-
-    return true
-}
-
-func getSommationOfPrimesUntil(number:Int) -> Int {
-
-    var sum = 2
-
-    for var i = 3; i < number; i += 2 {
-        if isPrime(i) {
-            sum += i
+    
+    var result = 5 // 2 + 3
+    for var i = 5; i < composite.count - 1; i += 4 {
+        if composite[i] == false {
+            result += i
+        }
+        i+=2
+        if x<n && composite[i] == false {
+            result += i
         }
     }
-
-    return sum
+    
+    return result
 }
 
 func euler10() {
-    let number = getSommationOfPrimesUntil(2_000_000)
+    let number = summationOfPrimesBelow(6)
     
     println(number)
 }
@@ -66,5 +83,5 @@ func printTimeElapsedWhenRunningCode(operation:() -> ()) {
 
 printTimeElapsedWhenRunningCode(euler10)
 
-// 1.05 s
+// 0.012s
 
