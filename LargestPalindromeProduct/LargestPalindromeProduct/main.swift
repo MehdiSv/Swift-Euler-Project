@@ -35,7 +35,7 @@ extension Int {
     
 }
 
-func getHighestPalindromicNumber() {
+func highestPalindromicNumber()  -> Int {
     let leftNumber = 999
     let rightNumber = 999
     
@@ -54,18 +54,21 @@ func getHighestPalindromicNumber() {
         }
     }
     
-    println(highestPalindromic)
+    return highestPalindromic
 }
 
+func euler4() {
+    
+    let highestPalindrom = highestPalindromicNumber()
+    
+    println(highestPalindrom)
+}
 
-func printTimeElapsedWhenRunningCode(title:String, operation:()->()) {
+func printTimeElapsedWhenRunningCode(operation:()->()) {
     let startTime = CFAbsoluteTimeGetCurrent()
     operation()
     let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-    println("Time elapsed for \(title): \(timeElapsed) s")
+    println("Time elapsed for : \(timeElapsed) s")
 }
 
-printTimeElapsedWhenRunningCode("Largest Palindrome", getHighestPalindromicNumber)
-
-
-
+printTimeElapsedWhenRunningCode(euler4)

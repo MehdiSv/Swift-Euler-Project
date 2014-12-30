@@ -10,17 +10,36 @@ import Foundation
 
 let NUMBER = Int.max
 
-var maxNumber = NUMBER
-loop: for var factor = 2; factor <  maxNumber;factor++ {
-
-    if maxNumber == factor {
-        break
-    }
-    if maxNumber % factor == 0 {
-        maxNumber /= factor
-        factor = 2
+func largestPrimeFactor() -> Int {
+    
+    var maxNumber = NUMBER
+    loop: for var factor = 2; factor <  maxNumber;factor++ {
+        
+        if maxNumber == factor {
+            break
+        }
+        if maxNumber % factor == 0 {
+            maxNumber /= factor
+            factor = 2
+        }
+        
     }
     
+    return maxNumber
 }
 
-println(maxNumber)
+func euler3() {
+    
+    let largestPrime = largestPrimeFactor()
+    
+    println(largestPrimeFactor)
+}
+
+func printTimeElapsedWhenRunningCode(operation:()->()) {
+    let startTime = CFAbsoluteTimeGetCurrent()
+    operation()
+    let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+    println("Time elapsed : \(timeElapsed) s")
+}
+
+printTimeElapsedWhenRunningCode(euler3)
