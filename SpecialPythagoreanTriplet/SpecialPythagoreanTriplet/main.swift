@@ -8,7 +8,7 @@
 
 import Foundation
 
-func getSpecialPythagoreanTriplet(sum:Int) -> Int {
+func specialPythagoreanTriplet(sum:Int) -> Int {
     
     for var a = 1; a <= (sum - 3) / 3; a++ {
         for var b = a + 1; b <= (sum - 1 - a) / 2; b++ {
@@ -22,7 +22,7 @@ func getSpecialPythagoreanTriplet(sum:Int) -> Int {
 }
 
 func euler9() {
-    let number = getSpecialPythagoreanTriplet(1000)
+    let number = specialPythagoreanTriplet(1000)
     
     println(number)
 }
