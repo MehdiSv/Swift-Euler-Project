@@ -18,11 +18,11 @@ func largestProduct(digits : [Int], numDigits : Int) -> Int {
         
         var leftVal = digits[i - numDigits];
         if (leftVal != 0) {
-            if (prevVal != 0){
+            if (prevVal != 0) {
 
                 prevVal = (prevVal / leftVal) * (digits[i])
             }
-        } else{
+        } else {
             prevVal = reduce(i - numDigits + 1 ..< i + 1, 1) { $0 * digits[$1] }
         }
         maxNumber = max(maxNumber, prevVal)
