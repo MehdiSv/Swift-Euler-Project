@@ -8,31 +8,32 @@
 
 import Foundation
 
-let NUMBER = Int.max
+let NUMBER = 441
 
-func largestPrimeFactor() -> Int {
-    
-    var maxNumber = NUMBER
-    loop: for var factor = 2; factor <  maxNumber;factor++ {
-        
-        if maxNumber == factor {
-            break
+extension Int {
+    func isMultipleOf(factor: Int) -> Bool {
+        return self % factor  == 0
+    }
+}
+
+func findLargestPrimeFactorFrom(let smallest: Int, let toFactor: Int) -> Int {
+    var maxFactor = Int(sqrt(Double(toFactor)))
+    maxFactor = maxFactor < smallest ? smallest : maxFactor
+    for factor in smallest...maxFactor {
+        if toFactor.isMultipleOf(factor) {
+            println(factor)
+            return findLargestPrimeFactorFrom(factor, toFactor/factor)
         }
-        if maxNumber % factor == 0 {
-            maxNumber /= factor
-            factor = 2
-        }
-        
     }
     
-    return maxNumber
+    return toFactor
 }
 
 func euler3() {
     
-    let largestPrime = largestPrimeFactor()
+    let largestPrime = findLargestPrimeFactorFrom(2, NUMBER)
     
-    println(largestPrimeFactor)
+    println(largestPrime)
 }
 
 func printTimeElapsedWhenRunningCode(operation:()->()) {
