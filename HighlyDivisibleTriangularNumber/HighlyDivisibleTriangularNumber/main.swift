@@ -56,7 +56,7 @@ func highlyDivisibleTriangularNumber() -> Int {
     return triangleNumber
 }
 
-func euler11() {
+func euler12() {
     let number = highlyDivisibleTriangularNumber()
     
     println(number)
@@ -69,5 +69,5 @@ func printTimeElapsedWhenRunningCode(operation:() -> ()) {
     println("Time elapsed : \(timeElapsed) s")
 }
 
-printTimeElapsedWhenRunningCode(euler11)
+printTimeElapsedWhenRunningCode(euler12)
 
