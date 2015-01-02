@@ -8,56 +8,45 @@
 
 import Foundation
 
-let OverNumberOfDivisors = 500
-
-extension Int {
-    func isMultipleOf(factor: Int) -> Bool {
-        return self % factor == 0
+func countDivisors(var n : Int) -> Int {
+    
+    var numDivisors = 1
+    var factor = 2
+    
+    while factor * factor <= n {
+        if n % factor == 0 {
+            var exponent = 0
+            do {
+                exponent++
+                n /= factor
+            } while n % factor == 0
+            numDivisors *= exponent + 1
+        }
+        factor = factor == 2 ? 3 : factor + 2
     }
+    if n > 1 {
+        numDivisors *= 2
+    }
+    
+    return numDivisors
 }
 
-func findPrimesFactorFrom(let smallest: Int, let toFactor: Int, inout primesFactor:[Int:Int]) {
-    var maxFactor = Int(sqrt(Double(toFactor)))
-    maxFactor = maxFactor < smallest ? smallest : maxFactor
-    for factor in smallest...maxFactor {
-        if toFactor.isMultipleOf(factor) {
-            primesFactor[factor] = (primesFactor[factor] ?? 0) + 1
-            return findPrimesFactorFrom(factor, toFactor / factor, &primesFactor)
+func highlyDivisibleTriangularNumber(requiredDivisors : Int) -> Int {
+    
+    var n = 1
+    while (countDivisors((n + 1) / 2) * countDivisors(n) < requiredDivisors) {
+        n++;
+        if (countDivisors(n / 2) * countDivisors(n + 1) >= requiredDivisors) {
+            break;
         }
+        n++;
     }
-    
-    primesFactor[toFactor] = (primesFactor[toFactor] ?? 0) + 1
-}
-
-func highlyDivisibleTriangularNumber() -> Int {
-
-    var currentNumberOfDivisors = 1
-    var triangleNumber = 1
-    var number = 1
-    
-    var primesFactor:[Int:Int] = [:]
-    
-    while OverNumberOfDivisors >= currentNumberOfDivisors {
-        
-        number++
-        triangleNumber += number
-        primesFactor = [:]
-     
-        findPrimesFactorFrom(2, triangleNumber, &primesFactor)
-
-        currentNumberOfDivisors = 1
-        for (index, factor) in primesFactor {
-            if index != 1 {
-                currentNumberOfDivisors *= (factor + 1)
-            }
-        }
-    }
-    
+    let triangleNumber = n * (n + 1) / 2
     return triangleNumber
 }
 
 func euler12() {
-    let number = highlyDivisibleTriangularNumber()
+    let number = highlyDivisibleTriangularNumber(500)
     
     println(number)
 }
