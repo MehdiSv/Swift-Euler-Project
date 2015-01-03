@@ -8,14 +8,13 @@
 
 import Foundation
 
-let NUMBER_MAX = 999_999
-
 func collatzSequenceForNumber(var number:Int, inout steps:[Int]) -> Int {
 
     var numberOfSteps = 0
     var found = false
+    let initialNumber = number
     
-    while (found == false && number > 1) {
+    while (found == false) {
 
         if number % 2 == 0 {
             number /= 2
@@ -24,20 +23,22 @@ func collatzSequenceForNumber(var number:Int, inout steps:[Int]) -> Int {
             numberOfSteps++
         }
         
-        found = number < NUMBER_MAX ? steps[number] > 0 : false
+        found = number < steps.count ? steps[number] > 0 : false
         numberOfSteps++
     }
     
     numberOfSteps += steps[number]
+    steps[initialNumber] = numberOfSteps
     
     return numberOfSteps
 }
 
-func longestCollatzSequence() -> (Int, Int) {
+func longestCollatzSequence(maxNumber:Int) -> (Int, Int) {
     var collatzSequence = (number:0, steps:0)
-    var steps:[Int] = [Int](count: NUMBER_MAX, repeatedValue: 0)
+    var steps:[Int] = [Int](count: maxNumber, repeatedValue: 0)
+    steps[1] = 1
     
-    for var number = 2; number < NUMBER_MAX; number++ {
+    for var number = 2; number < maxNumber; number++ {
 
         let steps = collatzSequenceForNumber(number, &steps)
         if steps > collatzSequence.steps {
@@ -50,7 +51,7 @@ func longestCollatzSequence() -> (Int, Int) {
 
 func euler14() {
 
-    let number = longestCollatzSequence()
+    let number = longestCollatzSequence(999_999)
     
     println(number)
 }
