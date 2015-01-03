@@ -7,22 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB8ACEE11A58A47400597044 /* numbers.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB8ACEDF1A58A3B900597044 /* numbers.txt */; };
 		FB97A1C91A556C0900AEE36C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97A1C81A556C0900AEE36C /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		FB97A1C31A556C0900AEE36C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 6;
 			files = (
+				FB8ACEE11A58A47400597044 /* numbers.txt in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FB8ACEDF1A58A3B900597044 /* numbers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = numbers.txt; sourceTree = "<group>"; };
 		FB97A1C51A556C0900AEE36C /* LargeSum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LargeSum; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB97A1C81A556C0900AEE36C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				FB97A1C81A556C0900AEE36C /* main.swift */,
+				FB8ACEDF1A58A3B900597044 /* numbers.txt */,
 			);
 			path = LargeSum;
 			sourceTree = "<group>";
@@ -233,6 +237,7 @@
 				FB97A1CE1A556C0900AEE36C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
