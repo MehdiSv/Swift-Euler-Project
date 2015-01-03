@@ -8,64 +8,57 @@
 
 import Foundation
 
-extension String {
-    subscript (i: Int) -> String {
-        return String(Array(self)[i])
-    }
-}
-
-func largeSum(numbers:[String]) -> [Int] {
-    var sum:[Int] = []
-    var retains:[Int:Int] = [:]
-    for var charIndex = 0; charIndex < countElements(numbers[0]); charIndex++ {
-        
-        var result = 0
-        
-        for number in numbers {
-            
-            let index = countElements(number) - charIndex
-            let char = number[index - 1]
-            
-            result += char.toInt()!
-        }
-        
-        let retain = retains[charIndex - 1] ?? 0
-        var resultIndex = result % 10 + retain
-        if resultIndex >= 10 {
-            addRetain(&retains, charIndex, resultIndex / 10)
-            resultIndex %= 10
-        }
-        retains.removeValueForKey(charIndex - 1)
-        
-        sum.append(resultIndex)
-        
-        for var i = charIndex; result > 0; i++ {
-        
-            result /= 10
-            let retain = result % 10
-            
-            addRetain(&retains, i, retain)
-        }
-    }
-
-    let sortedRetains = sorted(retains) { $0.0 < $1.0 }
-    for retain in sortedRetains {
-        sum.append(retain.1)
+func addToResult(inout results:[Int], var addResult:Int, index:Int) {
+    
+    if index == results.count {
+        results.append(0)
     }
     
-    return sum.reverse()
+    addResult = results[index] + addResult
+    
+    var result = addResult % 10
+    
+    results[index] = result
+    
+    var retain = addResult / 10
+    if retain > 0 {
+        addToResult(&results, retain, index + 1)
+    }
 }
 
-func addRetain(inout retains:[Int:Int], index:Int, retain:Int) {
-    if retain > 0 {
-        var newRetain = (retains[index] ?? 0) + retain
-        if newRetain >= 10 {
-            addRetain(&retains, index + 1, newRetain / 10)
-            newRetain %= 10
-        }
+func add(left:String, right:String) -> String {
+    
+    let leftNumbers:[Int] = Array(left).reverse().map() { String($0).toInt()! }
+    let rightNumbers:[Int] = Array(right).reverse().map() { String($0).toInt()! }
+
+    var results:[Int] = [Int]()
+    var index = max(leftNumbers.count, rightNumbers.count)
+    
+    var i = 0
+    while i < index {
         
-        retains[index] = newRetain
+        let leftNumber = i >= leftNumbers.count ? 0 : leftNumbers[i]
+        let rightNumber = i >= rightNumbers.count ? 0 : rightNumbers[i]
+
+        let addResult = leftNumber + rightNumber
+        addToResult(&results, addResult, i)
+
+        i++
     }
+    
+    return "".join(results.reverse().map() { String($0) } )
+}
+
+func largeSum(numbers:[String]) -> String {
+    
+    var result = ""
+    for number in numbers {
+        
+        result = add(result, number)
+        
+    }
+    
+    return result
 }
 
 func euler13() {
