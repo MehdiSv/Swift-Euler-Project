@@ -57,12 +57,28 @@ func powS(x:String, var power:Int) -> String {
     return result
 }
 
-let powerSum =  powS("2", 1000)
-
-println(powerSum)
-
-let result = reduce(powerSum, 0) { (result, char) -> Int in
-    return String(char).toInt()! + result
+func powerDigitSum(x:String, var power:Int) -> Int {
+    let powerSum =  powS(x, power)
+    
+    let result = reduce(powerSum, 0) { (result, char) -> Int in
+        return String(char).toInt()! + result
+    }
+    
+    return result
 }
 
-println(result)
+func euler16() {
+    
+    let number = powerDigitSum("2", 1000)
+    
+    println(number)
+}
+
+func printTimeElapsedWhenRunningCode(operation:() -> ()) {
+    let startTime = CFAbsoluteTimeGetCurrent()
+    operation()
+    let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+    println("Time elapsed : \(timeElapsed) s")
+}
+
+printTimeElapsedWhenRunningCode(euler16)
