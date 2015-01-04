@@ -26,50 +26,57 @@ func addMulToResult(inout results:[Int], var mulResult:Int, index:Int) {
     }
 }
 
-func mult(left:String, right:String) -> String {
+func infMult(left:[Int], right:[Int]) -> [Int] {
     
     var results:[Int] = [Int]()
-    for (j, rightChar) in enumerate(reverse(right)) {
-     
-        let rightNumber = String(rightChar).toInt()!
+    for (j, rightNumber) in enumerate(reverse(right)) {
         
-        for (i, leftChar) in enumerate(reverse(left)) {
-            
-            let leftNumber = String(leftChar).toInt()!
+        for (i, leftNumber) in enumerate(reverse(left)) {
             
             let mulResult = leftNumber * rightNumber
             addMulToResult(&results, mulResult, i + j)
         }
     }
     
-    return "".join(results.reverse().map() { String($0) } )
+    return results.reverse()
 }
 
-func powS(x:String, var power:Int) -> String {
+func infPow(x:Int, var power:Int) -> [Int] {
     
-    var result = x
-    while power > 1 {
-
-        result = mult(result, x)
+    var result = [1]
+    var xArray = intToIntArray(x)
+    while power > 0 {
+        
+        result = infMult(result, xArray)
         power--
     }
     
     return result
 }
 
-func powerDigitSum(x:String, var power:Int) -> Int {
-    let powerSum =  powS(x, power)
+func intToIntArray(var number:Int) -> [Int] {
+    var intArray:[Int] = []
     
-    let result = reduce(powerSum, 0) { (result, char) -> Int in
-        return String(char).toInt()! + result
+    while number > 0 {
+        
+        intArray.append(number % 10)
+        number /= 10
     }
+    
+    return intArray.reverse()
+}
+
+func powerDigitSum(x:Int, var power:Int) -> Int {
+    let powerSum = infPow(x, power)
+    
+    let result = reduce(powerSum, 0) { $0 + $1 }
     
     return result
 }
 
 func euler16() {
     
-    let number = powerDigitSum("2", 1000)
+    let number = powerDigitSum(2, 1000)
     
     println(number)
 }
