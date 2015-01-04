@@ -28,16 +28,31 @@ func addToResult(inout results:[Int], var addResult:Int, index:Int) {
 
 func add(inout left:[Int], right:[Int]) {
     
-    var index = max(left.count, right.count)
+    var indexMax = max(left.count, right.count)
     
     var i = 0
-    while i < index {
+    while i < indexMax {
         
-        let leftNumber = i >= left.count ? 0 : left[i]
-        let rightNumber = i >= right.count ? 0 : right[i]
+        var index = i
+        var rightNumber = i >= right.count ? 0 : right[i]
+        var carry = 0
+        do {
+            if index == left.count {
+                left.append(0)
+            }
+            
+            var addResult = left[index] + rightNumber + carry
+            
+            var result = addResult % 10
+            
+            left[index] = result
+            
+            carry = addResult / 10
+            index++
+            rightNumber = 0
 
-        let addResult = leftNumber + rightNumber
-        addToResult(&left, rightNumber, i)
+        } while (carry > 0)
+//        addToResult(&left, rightNumber, i)
 
         i++
     }
