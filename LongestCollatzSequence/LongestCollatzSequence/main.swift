@@ -51,9 +51,9 @@ func longestCollatzSequence(maxNumber:Int) -> (Int, Int) {
 
 func euler14() {
 
-    let number = longestCollatzSequence(999_999)
+    let result:(number:Int, steps:Int) = longestCollatzSequence(999_999)
     
-    println(number)
+    println(result.number)
 }
 
 func printTimeElapsedWhenRunningCode(operation:() -> ()) {
