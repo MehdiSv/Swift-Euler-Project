@@ -11,7 +11,7 @@ import Foundation
 func latticePaths(gridSize:Int) -> Int {
     
     var result = 1
-    for i in 1...gridSize {
+    for i in 1 ... gridSize {
         result = result * (gridSize + i) / i
     }
     
@@ -21,7 +21,6 @@ func latticePaths(gridSize:Int) -> Int {
 func euler15() {
     
     let number = latticePaths(20)
-    
     println(number)
 }
 
