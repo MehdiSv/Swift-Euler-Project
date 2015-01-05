@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "LargestProductGrid.Direction.isLastColumn (LargestProductGrid.Direction)(Swift.Array&lt;Swift.Int&gt;, x : Swift.Int) -&gt; Swift.Bool:main.swift">
+      </ContextState>
+      <ContextState
+         contextName = "top_level_code:main.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "maxNumber">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
