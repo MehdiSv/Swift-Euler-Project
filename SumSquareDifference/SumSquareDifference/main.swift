@@ -8,15 +8,19 @@
 
 import Foundation
 
-func getSumSquareDifference() {
-    let firstNumbers = [Int](1...100)
+func sumSquareDifference() -> Int {
     
-    let sum = firstNumbers.reduce(0) { $0 + $1 }
-    let squaresSum = sum * sum
+    let limit = 100
+    let sum = limit * (limit + 1) / 2
+    let sum_sq = (2 * limit + 1) * (limit + 1) * limit / 6
+    return sum * sum - sum_sq
+}
+
+
+func euler6() {
     
-    let sumSquares = firstNumbers.reduce(0) { $0 + $1 * $1 }
+    let result = sumSquareDifference()
     
-    let result =  squaresSum - sumSquares
     println(result)
 }
 
@@ -24,19 +28,7 @@ func printTimeElapsedWhenRunningCode(operation:()->()) {
     let startTime = CFAbsoluteTimeGetCurrent()
     operation()
     let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-    println("Time elapsed : \(timeElapsed) s")
+    println("Time elapsed for : \(timeElapsed) s")
 }
 
-/* fastest way */
-
-func fastestWay() {
-    
-    let limit = 100
-    let sum = limit * (limit + 1) / 2
-    let sum_sq = (2 * limit + 1) * (limit + 1) * limit / 6
-    println(sum * sum - sum_sq)
-}
-
-/* */
-
-printTimeElapsedWhenRunningCode(fastestWay)
+printTimeElapsedWhenRunningCode(euler6)

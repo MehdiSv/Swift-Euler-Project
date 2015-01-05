@@ -8,7 +8,7 @@
 
 import Foundation
 
-func getSmallestMultiple() {
+func smallestMultiple() -> Int {
     
     var result = 1
     var ranges = [Int](1...20)
@@ -25,16 +25,21 @@ func getSmallestMultiple() {
         
     }
     
+    return result
+}
+
+func euler5() {
+    
+    let result = smallestMultiple()
+    
     println(result)
 }
 
-func printTimeElapsedWhenRunningCode(title:String, operation:()->()) {
+func printTimeElapsedWhenRunningCode(operation:()->()) {
     let startTime = CFAbsoluteTimeGetCurrent()
     operation()
     let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-    println("Time elapsed for \(title): \(timeElapsed) s")
+    println("Time elapsed for : \(timeElapsed) s")
 }
 
-printTimeElapsedWhenRunningCode("Smallest Multiple", getSmallestMultiple)
-
-
+printTimeElapsedWhenRunningCode(euler5)

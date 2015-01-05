@@ -10,11 +10,6 @@ import Foundation
 
 let FIB_MAX = 4000000
 
-/* Using Lazy and SequenceType. Swift awesomness.
-*/
-
-// 1, 2, 3, 5, 8, 13
-
 struct NextFibNumber : SequenceType {
     
     func generate() -> GeneratorOf<Int> {
@@ -35,36 +30,25 @@ struct NextFibNumber : SequenceType {
     }
 }
 
-let fibSeq = lazy(NextFibNumber())
-let result = reduce(fibSeq.filter() {$0 % 2 == 0}, 0, {$0 + $1})
-println(result)
-
-/* iterative way
-
-var fibonacciSeq = [1, 2]
-
-func getNextFibNumber() -> Int {
+func evenFibonacciNumbers() -> Int {
     
-    let lastFibNumber = fibonacciSeq.last!
-    let beforeLastFibNumber = fibonacciSeq[fibonacciSeq.count - 2]
+    let fibSeq = lazy(NextFibNumber())
+    return reduce(fibSeq.filter() {$0 % 2 == 0}, 0, {$0 + $1})
     
-    return lastFibNumber + beforeLastFibNumber
 }
 
-var nextFibNumber = getNextFibNumber()
-do {
-    fibonacciSeq.append(nextFibNumber)
-    nextFibNumber = getNextFibNumber()
+func euler2() {
+    
+    let result = evenFibonacciNumbers()
+    
+    println(result)
 }
-    while nextFibNumber < FIB_MAX
 
+func printTimeElapsedWhenRunningCode(operation:()->()) {
+    let startTime = CFAbsoluteTimeGetCurrent()
+    operation()
+    let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+    println("Time elapsed for : \(timeElapsed) s")
+}
 
-let result = fibonacciSeq.reduce(0, combine: { (total, fibNumber) -> Int in
-    if fibNumber % 2 == 0 {
-        return total + fibNumber
-    }
-    return total
-})
-
-println(result)
-*/
+printTimeElapsedWhenRunningCode(euler2)
