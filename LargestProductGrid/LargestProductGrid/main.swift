@@ -209,10 +209,8 @@ func largestProductInGrid(grid:[[Int]]) -> Int {
         } while ( boxNumber != nil )
     }
     
-    let toto = saveHigherAdd.reduce(0) { $0 * $1 }
-    
-    
-    return toto
+    println(saveHigherAdd)
+    return saveHigherAdd.reduce(1) { $0 * $1 }
 }
 
 
